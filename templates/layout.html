@@ -1,0 +1,19 @@
+$def with (content)
+
+<!DOCTYPE HTML>
+<html>
+    <head>
+        <title>$content.title</title>
+
+        $if content.stylesheets:
+            $for stylesheet in content.stylesheets.split():
+                <link rel="stylesheet" href="static/css/${stylesheet}.css"/>
+    </head>
+    <body>
+        $:content
+
+        $if content.scripts:
+            $for script in content.scripts.split():
+                <script src="static/js/${script}.js"></script>
+    </body>
+</html>
